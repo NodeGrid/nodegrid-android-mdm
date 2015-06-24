@@ -4,5 +4,9 @@
     <string name="app_name">Nodegrid Android Manager</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="ng_device_admin_description">Device adminnistration allows full control of your device</string>
+    <string name="ng_device_admin">Device Administration</string>
+    <string name="admin_enabled">The device admin has been enabled</string>
+    <string name="admin_disabled">The device admin has been disabled</string>
 
 </resources>
