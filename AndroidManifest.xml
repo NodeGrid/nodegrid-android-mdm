@@ -22,6 +22,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+ To use the Device Administration API, the application's manifest must include the following:
+ #A subclass of DeviceAdminReceiver that includes the following:
+ #The BIND_DEVICE_ADMIN permission.
+ #The ability to respond to the ACTION_DEVICE_ADMIN_ENABLED intent, expressed in the manifest as an intent filter.
+        -->
+        <receiver
+            android:name=".PolicyHandler$NGDeviceAdminReceiver"
+            android:description="@string/ng_device_admin_description"
+            android:label="@string/ng_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/ng_device_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
