@@ -1,16 +1,35 @@
 package com.nodegrid.android.manager;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class Main extends ActionBarActivity {
+	
+	 private static final int REQUEST_CODE_ENABLE_ADMIN = 1;
+	
+	 DevicePolicyManager mDPM;
+	 ComponentName mDeviceAdmin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+	    //The DeviceAdminReceiver should receive the intent below to administer the device.
+		 mDeviceAdmin = new ComponentName(this, PolicyHandler.NGDeviceAdminReceiver.class);
+		
+		 //this intent prompts the user to allow the app to administer the device
+		 //the user has the choice to accept or decline.
+		Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+		intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mDeviceAdmin);
+		intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, R.string.ng_admin_permission_message);
+		startActivityForResult(intent, REQUEST_CODE_ENABLE_ADMIN);
+		
 	}
 
 	@Override

@@ -8,5 +8,6 @@
     <string name="ng_device_admin">Device Administration</string>
     <string name="admin_enabled">The device admin has been enabled</string>
     <string name="admin_disabled">The device admin has been disabled</string>
+    <string name="ng_admin_permission_message">NodeGrid will be a device administrator to fullfil features of this application.</string>
 
 </resources>
